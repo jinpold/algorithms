@@ -3,14 +3,14 @@ import java.util.Scanner;
 public class Calculator {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);// 객체 생성(알고리즘 생성의 최소조건)
+        Scanner scanner = new Scanner(System.in);
         System.out.println("첫번째 숫자를 입력하세요");
         String num1 = scanner.next();
         System.out.println("두번째 숫자를 입력하세요");
         String num2 = scanner.next();
         System.out.println("+, -, *, / 을 입력하세요");
         String opcode = scanner.next();
-        int result = 0; // ""; -> 0으로 변경 (num1 + num2;)
+        int result = 0;
         int intNum1 = Integer.parseInt(num1);
         int intNum2 = Integer.parseInt(num2);
 

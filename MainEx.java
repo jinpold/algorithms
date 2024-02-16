@@ -4,7 +4,7 @@ public class MainEx {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in); // 소문자 스캐너(이름)
+        Scanner scanner = new Scanner(System.in);
         System.out.println("ID: ");
         String ID = scanner.next();
         System.out.println("비번: ");
