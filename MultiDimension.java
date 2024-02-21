@@ -20,7 +20,7 @@ public class MultiDimension {
         int max1 = 0;
 
         for (int i = 0; i < scores1.length; i++) {
-            System.out.println(i+1 + " 번째 랜덤값을 적용합니다.");
+            System.out.println(i+1 + "번째 랜덤값을 적용합니다.");
             scores1[i] = (int)(Math.random()*100);
             System.out.println(scores1[i]);
             avg1 += scores1[i];
@@ -34,7 +34,7 @@ public class MultiDimension {
         int avg2 = 0;
         int max2 = 0;
         for (int i = 0; i < scores2.length; i++) {
-            System.out.println(i+1 + " 번째 랜덤값을 적용합니다.");
+            System.out.println(i+1 + "번째 랜덤값을 적용합니다.");
             scores2[i] = (int)(Math.random()*100);
             System.out.println(scores2[i]);
             avg2 += scores2[i];

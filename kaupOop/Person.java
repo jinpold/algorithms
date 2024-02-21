@@ -1,13 +1,15 @@
 package kaupOop;
 
 public class Person {
-    private String name;
+    private String name; //  인스턴스 필드
     private double height; // 데이터값
     private double weight;
     private double bmi;
     private String bodyMass;
 
     public void createHeight() {
+        // public static void <- static이 없으면
+        // 인스턴스 메소드
         this.height = (int)(Math.random()*50)+150;
     }
     public double getHeight() {
@@ -24,18 +26,22 @@ public class Person {
     }
 
     public double getBmi() {
+
         return this.bmi;
     }
 
     public String getBodyMass() {
+
         return this.bodyMass;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
     public String getName() {
+
         return this.name;
     }
 
@@ -54,8 +60,5 @@ public class Person {
         } else if (bmi > 25)
             bodyMass = "비만";
         this.bodyMass =bodyMass;
-    }
-
-    public void createKorean() {
     }
 }
