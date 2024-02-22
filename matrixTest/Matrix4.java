@@ -13,11 +13,9 @@ public class Matrix4 {
         for (int i = 0; i < mtx.length; i++) {    //set
             for (int j = 0; j < mtx[i].length; j++) {
                 mtx[i][j] = k;
-                //k+=4;
                 k++;
 
             }
-            //k-=24;
 
         }
         for (int i = 0; i < mtx.length; i++) { //get

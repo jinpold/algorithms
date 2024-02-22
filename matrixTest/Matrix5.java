@@ -11,15 +11,19 @@ public class Matrix5 {
             int[][] arr = new int[5][5];
             int k =1;
             for (int i = 0; i < arr.length; i++) {
-                if (i%2 == 0 ){
+                if (i%2 == 0 ) {
                     for (int j = 0; j < arr[i].length; j++) {
                         arr[i][j] = k;
                         k++;
-                    }} else {
+                    }
+
+                }else {
+
                     for (int j = arr.length-1; j >= 0 ; j--) {
                         arr[i][j] = k;
                         k++;
-                    }}
+                    }
+                }
             }
             // ^set 값을 바꿔주기만함
             for (int i = 0; i < arr.length; i++) {

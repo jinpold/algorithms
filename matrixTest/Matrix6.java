@@ -9,17 +9,13 @@ package matrixTest;
 public class Matrix6 {
 
     public static void main(String[] args) {
-        int[][] mtx = new int[5][5];
-        int k = 25;
-        for (int i = 0; i < mtx.length; i++) {
-            for (int j = 0; j < mtx[i].length; j++) {
-                mtx[i][j] = k;
-                k--;
-            }
-        }
-        for (int i = 0; i < mtx.length; i++) {
-            for (int j = 0; j < mtx[i].length; j++) {
-                System.out.print(mtx[j][i] + "");
+
+        int[][] mtx = new int[10][10];
+
+        for (int i = 1; i < mtx.length; i++) {
+            for (int j = 2; j < mtx.length; j++) {
+                mtx[i][j] = i * j;
+                System.out.print("\t");
             }
             System.out.println();
         }
