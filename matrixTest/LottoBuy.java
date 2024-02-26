@@ -19,71 +19,35 @@ import java.util.Scanner;
 public class LottoBuy {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         System.out.println("로또 번호 8개를 입력하세요 ");
         IBuyLotto buy = new BuyLotto();
         ILottoDraw draw = new LottoDraw();
         ILottoMatch match = new LottoMatch();
 
-        int[] arr1 = new int[6];
-        for (int i = 0; i < arr1.length; i++) {
-            arr1[i] = sc.nextInt();
-        }
-        arr1 = draw.sortAscending(arr1);
-        draw.printLotto(arr1);
+
+        int[] myLotto = buy.buyLotto();
+        myLotto = draw.sortAscending(myLotto);
+        System.out.println("\n    나의 로또 번호");
+        draw.printLotto(myLotto);
         System.out.println("");
-        System.out.println("======..추첨중입니다..======");
+        System.out.println("\n======추첨중입니다======");
 
-        // 로또 구입
 
-//        int[] arr1 = new int[6];
-//        arr1 = draw.createArrayWithoutDuplicates(arr1);
-//        arr1 = draw.sortAscending(arr1);
-//        draw.printLotto(arr1);
-//        System.out.println("");
-//        System.out.println("");
+        int[] originLotto = new int[6];
+        originLotto = draw.createArrayWithoutDuplicates(originLotto);
+        originLotto = draw.sortAscending(originLotto);
 
-        int[] arr2 = new int[6];
-        arr2 = draw.createArrayWithoutDuplicates(arr2);
-        arr2 = draw.sortAscending(arr2);
-        draw.printLotto(arr2);
+        System.out.println("\n    로또 추첨 번호");
+        draw.printLotto(originLotto);
         System.out.println("");
-        // 구입한 로또와 추첨한 로또의 일치여부 체크
-
-        // 번호 비교
-        int num = 0;
-        System.out.println("");
-        System.out.print("당첨 결과는 : ");
-        for (int i=0;i< arr1.length;i++){
-            for(int j=0; j< arr2.length;j++) {
-                if (arr1[i] != arr2[j]) {
-
-                }else
-                    num+=1;
-            }
-        }
-        System.out.println();
-
-        switch (num){
-            case 6:
-                System.out.println("1등");
-                break;
-            case 5:
-                System.out.println("2등");
-                break;
-            case 4:
-                System.out.println("3등");
-                break;
-            case 3:
-                System.out.println("4등");
-                break;
-            case 2,1,0:
-                System.out.println("꽝");
-        }
+        int num = match.findSame(myLotto, originLotto);
+        System.out.println("\n      당첨 결과");
+        System.out.println("         "+match.rank(num));
 
     }
 }
-interface IBuyLotto{ int[] buyLotto();}
+interface IBuyLotto{int[] buyLotto();}
+
 interface ILottoDraw{
     int createRandomNumber(int start, int end);
     int[] createArrayWithoutDuplicates(int[] arr);
@@ -91,16 +55,23 @@ interface ILottoDraw{
     void printLotto(int[] arr);
 }
 interface ILottoMatch{
-    int findSame(int[] originLotto, int[] myLotto);
-    String rank(int count);
+    int findSame(int[] myLotto, int[] originLotto);
+    String rank(int num);
 }
-class BuyLotto implements IBuyLotto{
+class BuyLotto implements IBuyLotto {
 
     @Override
     public int[] buyLotto() {
-        return new int[0];
+        Scanner sc = new Scanner(System.in);
+        int[] lotto = new int[6];
+        for (int i = 0; i < lotto.length; i++) {
+            lotto[i] = sc.nextInt();
+
+        }
+        return lotto;
     }
 }
+
 class LottoDraw implements ILottoDraw{
 
     @Override
@@ -127,21 +98,14 @@ class LottoDraw implements ILottoDraw{
 
     @Override
     public int[] createArrayWithoutDuplicates(int[] arr) {
-        for(int i=0; i<6; i++){
-            int randomNumber = createRandomNumber(1,8);
-            boolean check = false;
-            for(int j=0; j<6; j++){
-                if(arr[j] == randomNumber){
-                    // 중복되면  check 를 true 로 바꿔라..
-                    check = true;
+        for (int i = 0; i < 6; i++) {
+            int temp = (int) (Math.random() * 7) + 1;
+            arr[i] = temp;
+            for (int j = 0; j < i; j++) {
+                if (arr[i] == arr[j]) {
+                    i--;
                 }
             }
-            if(check==false){
-                arr[i] = randomNumber; // 중복되지 않았으니 배열에 담아라.
-            }else{
-                i--; // 중복됐으면 이번 회수는 무효로 하고 다시 뽑아라.
-            }
-
         }
         return arr;
     }
@@ -153,15 +117,42 @@ class LottoDraw implements ILottoDraw{
     }
 
 }
-class LottoMatch implements ILottoMatch{
-    @Override
-    public int findSame(int[] originLotto, int[] myLotto){
-        return 0;
-    }
+class LottoMatch implements ILottoMatch {
 
     @Override
-    public String rank(int count) {
-        return null;
+    public int findSame(int[] originLotto, int[] myLotto) {
+        // 번호 비교
+        int num = 0;
+        for (int i = 0; i < myLotto.length; i++) {
+            for (int j = 0; j < originLotto.length; j++) {
+                if (myLotto[i] == originLotto[j]) {
+                    num += 1;
+                }
+            }
+        } return num;
     }
-}
+    @Override
+    public String rank (int num){
+        String rank = "";
+        switch (num) {
+                case 6:
+                    rank = "1등";
+                    break;
+                case 5:
+                    rank = "2등";
+                    break;
+                case 4:
+                    rank = "3등";
+                    break;
+                case 3:
+                    rank = "4등";
+                    break;
+                case 2, 1, 0:
+                    rank = "꽝";
+                    break;
+            }
+            return rank;
+        }
+
+    }
 
