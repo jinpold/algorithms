@@ -1,6 +1,8 @@
 package matrixTest;
 
 import java.util.Random;
+import java.util.Scanner;
+
 /**
  1. 서로 겹치지 않는 숫자 6개를 생성
  2. 각 숫자는 1 ~ 45 범위 내의 숫자
@@ -15,6 +17,8 @@ import java.util.Random;
  * */
 public class Lotto {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
         // 1 ~ 45 범위 내의 서로 겹치지 않는 숫자 6개를 생성
         int[] arr = new int[6];
         // 중복되지 않은 상태

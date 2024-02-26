@@ -1,11 +1,14 @@
 package matrixTest;
 
+import java.util.Arrays;
+
 public class LottoMatching {
     public static void main(String[] args) {
 
         // 내 로또 번호 구하기
         int[] lotto = new int[6];
         lotto = createArrayWithoutDuplicate(lotto);
+        lotto = sortAscending(lotto);
         System.out.println();
         System.out.println();
 
@@ -14,26 +17,29 @@ public class LottoMatching {
         printLotto(lotto);
 
         // 로또 당첨 번호 구하기
-        int[] Lotto2 = new int[6];
-        Lotto2 = createArrayWithoutDuplicate(Lotto2);
-        Lotto2 = sortAscending(Lotto2);
+        int[] lotto2 = new int[6];
+        lotto2 = createArrayWithoutDuplicate(lotto2);
+        lotto2 = sortAscending(lotto2);
         System.out.println();
         // 로또 당첨 번호 출력
         System.out.println("로또 당첨 번호입니다.");
-        printLotto(Lotto2);
+        printLotto(lotto2);
+
+
+
 
         // 번호 비교
         int num = 0;
-        for (int i=0;i<6;i++){
-            for(int j=0; j< Lotto2.length;j++) {
-                if (lotto[i] != Lotto2[j]) {
-                }
-                else{
+        for (int i=0;i< lotto.length;i++){
+            for(int j=0; j< lotto2.length;j++) {
+                if (lotto[i] != lotto2[j]) {
+
+                }else
                     num+=1;
-                }
             }
         }
         System.out.println();
+
         switch (num){
             case 6:
                 System.out.println("1등");
@@ -49,10 +55,11 @@ public class LottoMatching {
                 break;
             case 2,1,0:
                 System.out.println("꽝");
-                break;
         }
 
     }
+
+
 
     private static void printLotto(int[] lotto) {
         for (int i = 0; i < 6; i++) {
@@ -60,6 +67,8 @@ public class LottoMatching {
         }
     }
 
+
+    // 오름차순 버블정렬
     private static int[] sortAscending(int[] lotto) {
         for(int i = lotto.length-1;i>0;i--)
             for(int j = 0; j<i;j++)
@@ -70,6 +79,8 @@ public class LottoMatching {
                 }
         return lotto;
     }
+
+    //중복제거
 
     private static int[] createArrayWithoutDuplicate(int[] lotto) {
         for (int i = 0; i < 6; i++) {
