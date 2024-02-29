@@ -117,6 +117,8 @@ class LottoDraw implements ILottoDraw{
     }
 
 }
+
+
 class LottoMatch implements ILottoMatch {
 
     @Override

@@ -27,6 +27,8 @@ public class Dwarf {
 
         int fake1 = 0, fake2 = 0;
 
+        // 난쟁이 7명의 키 합이 100이므로 합산이 100이 넘어가는 난쟁이는 제외
+
         for (int a = 0; a < dwarf.length - 1; a++) {
             for (int b = a + 1; b < dwarf.length; b++) {
                 if (sum - dwarf[a] - dwarf[b] == 100) {
