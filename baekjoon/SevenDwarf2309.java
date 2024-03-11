@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class SevenDwarf2309 {
 
+    // 입력 20 7 23 19 10 15 25 8 13
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int[] dwarf = new int[9];
