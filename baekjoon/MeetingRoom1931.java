@@ -7,12 +7,11 @@ package baekjoon;
 import java.util.Comparator;
 import java.util.Arrays;
 import java.util.Scanner;
-
 public class MeetingRoom1931 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int meetingCount = sc.nextInt();
-        int[][] timeTable = new int[meetingCount][2];
+        int meetingCount = sc.nextInt(); // 회의 갯수
+        int[][] timeTable = new int[meetingCount][2]; // 시작시간, 끝나는시간, 2개이므로 이중배열
 
         for (int i = 0; i < meetingCount; i++) {
             timeTable[i][0] = sc.nextInt(); // 0 - 시작타임
@@ -35,8 +34,8 @@ public class MeetingRoom1931 {
                 count++;
             }
         }
-        // 단순히 종료시간이 빠른순으로 정렬한다면 시작시간이 더 빠르더라도 카운트되지 않는 예외가 발생할수있다.
-        // 이를 방지하기위해 시작시간또한 오름차순으로 정렬시키는 반복문
+        // 단순히 종료시간이 빠른순으로 정렬한다면 시작시간이 더 빠르더라도 카운트되지 않는 예외가 발생 할 수 있다.
+        // 이를 방지하기위해 시작 시간 또한 오름차순으로 정렬시키는 반복문
         System.out.println(count);
     }
 }
