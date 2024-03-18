@@ -25,7 +25,6 @@ public class Score2506 {
         }
         // 최종 총 점수 출력
         System.out.println(totalScore);
-        sc.close();
     }
 }
 
