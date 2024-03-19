@@ -1,4 +1,4 @@
-package baekjoon;
+package basic;
 import java.util.Scanner;
 public class Score2506 {
     public static void main(String[] args) {
@@ -23,7 +23,6 @@ public class Score2506 {
                     prevScore = 0;
             }
         }
-        // 최종 총 점수 출력
         System.out.println(totalScore);
     }
 }
