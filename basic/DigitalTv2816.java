@@ -35,5 +35,6 @@ KBS2를 두 번째로 만들려고 한다.
 이미 KBS1이 첫 번째에, KBS2가 두 번째에 있는 입력은 주어지지 않는다.
  */
 
+import java.util.Scanner;
 public class DigitalTv2816 {
 }
